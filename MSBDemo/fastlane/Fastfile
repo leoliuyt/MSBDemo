@@ -1,0 +1,39 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.54.2"
+
+default_platform :ios
+#蒲公英api_key和user_key
+api_key="76e868247e6b24b8ad8ecbadc29e8644"
+user_key="4137076d0ea8a7c8fb954af8db32a573"
+
+platform :ios do
+  desc "Runs all the tests"
+  lane :test do
+    gym(scheme: "MSBDemo",
+    export_method: "development"
+    )
+
+  puts "开始上传蒲公英"
+  # 开始上传蒲公英
+  pgyer(api_key: "#{api_key}", user_key: "#{user_key}")
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics
